@@ -1,40 +1,41 @@
-// Clase 1: ¿Qué es programar? + Variables y Tipos de Datos
-
+// Clase 3: Lógica con Condicionales
 const { ask } = require('../helpers/input');
 
-
 async function main() {
-    const number = Number (await ask("ingresa un número: "));
-    const multiplo5 = number % 5 == 0;
-    const multiplo3 = number % 3 == 0;
-    const ambos = multiplo3 && multiplo5;
-    const ninguno = !multiplo3 && !multiplo5;
+  const number = Number(await ask("Ingresa un número:"));
 
-    switch (true) {
-        case ambos:
-            console.log("El número es multiplo por 3 y 5.");
-            break;
-        case multiplo3:
-            console.log("El número es multiplo por 3.");
-            break;
-        case multiplo5:
-            console.log("El número es multiplo por 5.");
-            break;
-        case ninguno:
-            console.log("El número no es multiplo por 3 ni por 5.");
-            break;
-    }
+  if (number % 3 !== 0 && number % 5 !== 0) {
+    console.log("No es múltiplo de 3 y 5");
+  } else if (number % 3 === 0 && number % 5 !== 0) {
+    console.log("Multiplo de 3")
+  } else if (number % 5 === 0 && number % 3 !== 0) {
+    console.log("Multiplo de 5")
+  } else {
+    console.log("Es múltiplo de 3 y 5");
+  }
 
-    const dia = Number (await ask("ingresa un número del 1 al 7: "));
-    const diasemana = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"];
-    const diaValido = dia >= 1 && dia <= 7;
-     
-    if (diaValido) {
-        console.log(`El día de la semana es ${diasemana[dia - 1]}.`);
-    } else {
-        console.log("El número ingresado no es válido. Debe estar entre 1 y 7.");
-    }
-    return
-}   
+  switch (true) {
+    case number % 3 === 0 && number % 5 === 0:
+      console.log("Es múltiplo de 3 y 5");
+      break;
+    case number % 3 === 0:
+      console.log("Es múltiplo de 3");
+      break;
+    case number % 5 === 0:
+      console.log("Es múltiplo de 5");
+      break;
+    default:
+      console.log("No es múltiplo de 3 o 5");
+  }
+
+  n % 3 === 0 && n % 5 === 0
+    ? "Múltiplo de 3 y 5"
+    : n % 3 === 0
+      ? "Múltiplo de 3"
+      : n % 5 === 0
+        ? "Múltiplo de 5"
+        : "No es múltiplo de 3 ni de 5";
+
+}
+
 main();
-
